@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest ./test/*.test.js"
+    "test": "jest ./test/*.test.js",
+    "precommit": "yarn test"
   },
   "devDependencies": {
+    "husky": "^0.13.3",
     "jest": "^20.0.4"
   }
 }
