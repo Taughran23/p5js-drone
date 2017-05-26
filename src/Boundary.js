@@ -15,6 +15,12 @@ class Boundary {
     noFill();
     rect(this.left, this.top, this.right - this.left, this.bottom - this.top);
   }
+  check (pos) {
+    if (pos.x > this.right) return new Vector(this.right, pos.y);
+    if (pos.x < this.left) return new Vector(this.left, pos.y);
+    if (pos.y > this.bottom) return new Vector(pos.x, this.bottom);
+    if (pos.y < this.top) return new Vector(pos.x, this.top);
+    return pos;
   }
 }
 

@@ -27,3 +27,16 @@ describe('#constructor', () => {
     expect(b.bottom).toBe(600);
   });
 });
+
+describe('#check', () => {
+  test('returns the passed vector if it is inside the boundary', () => {
+    let b = new Boundary(400, 400);  // from (200, 100) to (600, 500)
+    let v = new Vector(250, 250);
+    expect(b.check(v)).toEqual(v);
+  });
+  test('returns a vector on the same line but on the right edge when the width is exceeded', () => {
+    let b = new Boundary(400, 400);  // from (200, 100) to (600, 500)
+    let v = new Vector(650, 250);
+    expect(b.check(v)).toEqual(new Vector(600, 250));
+  });
+});
