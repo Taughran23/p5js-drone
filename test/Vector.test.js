@@ -41,5 +41,20 @@ describe('#sub', () => {
     expect(a.sub(b)).toEqual(new Vector(-2, -2));
     expect(b.sub(a)).toEqual(new Vector(2, 2));
   });
+  });
+
+describe('#isEqualTo', () => {
+  test('returns true if the current vector has the same components as the provided one', () => {
+    let a = new Vector(1, 2);
+    let b = new Vector(1, 2);
+    expect(a.isEqualTo(b)).toBe(true);
+  });
+
+  test('returns false if the current vector does not have the same components as the provided one', () => {
+    let a = new Vector(1, 2);
+    let b = new Vector(3, 4);
+    expect(a.isEqualTo(b)).toBe(false);
+  });
+});
 });
 });
