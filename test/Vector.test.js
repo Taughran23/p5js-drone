@@ -19,3 +19,14 @@ test('#getLength returns the length of the vector', () => {
   let v = new Vector(3, 4);
   expect(v.getLength()).toBe(5);
 });
+
+test('#resize returns a vector multiplied by the provided number', () => {
+  let v = new Vector(1, 2);
+  expect(v.resize(2)).toEqual(new Vector(2, 4));
+});
+
+test('#add returns a vector with components equal to the sum of the current vector plus the provided vector', () => {
+  let a = new Vector(1, 2);
+  let b = new Vector(3, 4);
+  expect(a.add(b)).toEqual(new Vector(4, 6));
+});
