@@ -1,5 +1,6 @@
 if (typeof require !== "undefined") {
   Vector = require('./Vector');
+  Boundary = require('./Boundary');
 }
 
 class Drone {
@@ -9,8 +10,10 @@ class Drone {
     this.targetPosition = new Vector(x, y);
     this.size = 16;
     this.speed = 2;
+    this.boundary = new Boundary(400, 400);
   }
   draw () {
+    this.boundary.draw();
     let color = this.power ? 'green' : 'red';
     fill(color);
     stroke(255);

@@ -1,6 +1,10 @@
 const Drone = require('../src/Drone');
 const Vector = require('../src/Vector');
 
+// P5.js globals
+global.width = 800;
+global.height = 600;
+
 test('is a function', () => {
   expect(typeof Drone).toBe('function');
 });
