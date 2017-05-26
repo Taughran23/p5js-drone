@@ -7,6 +7,7 @@ function setup () {
 }
 
 function draw () {
+  background(51);
   d.updatePosition();
   d.draw();
 }

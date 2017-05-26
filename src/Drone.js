@@ -11,6 +11,10 @@ class Drone {
     this.speed = 2;
   }
   draw () {
+    let color = this.power ? 'green' : 'red';
+    fill(color);
+    stroke(255);
+    strokeWeight(this.size / 4);
     ellipse(this.position.x, this.position.y, this.size);
     return this;
   }
