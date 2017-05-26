@@ -19,3 +19,30 @@ test('position should default to a (0, 0) Vector', () => {
   let d = new Drone();
   expect(d.position).toEqual(new Vector(0, 0));
 });
+
+describe('#power', () => {
+  test('#start sets power to true', () => {
+    let d = new Drone();
+    expect(d.start().power).toBe(true);
+  });
+  test('#shutdown sets power to false', () => {
+    let d = new Drone().start();
+    expect(d.shutdown().power).toBe(false);
+  });
+});
+
+describe('#move', () => {
+  test('drone does not move if power is false', () => {
+    let d = new Drone();
+    expect(d.move(100, 'N').position).toEqual(new Vector(0, 0));
+  });
+  test('sets target to the correct vector accoriding to the provided distance and direction', () => {
+    let d = new Drone().start();
+    expect(d.move(100, 'S').targetPosition).toEqual(new Vector(0, 100));
+  });
+  test('sets the step vector to the correct direction and a length of #speed', () => {
+    let d = new Drone().start();
+    expect(d.move(100, 'E').step).toEqual(new Vector(d.speed, 0));
+    expect(d.step.getLength()).toBe(d.speed);
+  });
+});

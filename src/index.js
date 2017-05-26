@@ -1,8 +1,11 @@
+let d;
+
 function setup () {
-  createCanvas(windowWidth, windowHeight)
-  background(51)
+  createCanvas(windowWidth, windowHeight);
+  background(51);
+  d = new Drone();
 }
 
 function draw () {
-  ellipse(width/2, height/2, 16)
+  d.draw();
 }
