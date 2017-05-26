@@ -3,10 +3,10 @@ if (typeof require !== "undefined") {
 }
 
 class Drone {
-  constructor () {
+  constructor (x=0, y=0) {
     this.power = false;
-    this.position = new Vector(0, 0);
-    this.targetPosition = new Vector(0, 0);
+    this.position = new Vector(x, y);
+    this.targetPosition = new Vector(x, y);
     this.size = 16;
     this.speed = 2;
   }
