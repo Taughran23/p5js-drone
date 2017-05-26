@@ -46,3 +46,28 @@ describe('#move', () => {
     expect(d.step.getLength()).toBe(d.speed);
   });
 });
+
+describe('#updatePosition', () => {
+  test('does not update the position if the current position is equal to the target position', () => {
+    let d = new Drone().start();
+    d.move(100, 'S');
+    d.position = new Vector(0, 100);
+    d.updatePosition();
+    expect(d.position).toEqual(new Vector(0, 100));
+  });
+  test('adds #step to #position if the current position is not equal to the target position', () => {
+    expect();
+    let d = new Drone().start();
+    d.move(100, 'S');
+    d.updatePosition();
+    let expectedPositionY = d.step.getLength();
+    expect(d.position).toEqual(new Vector(0, expectedPositionY));
+  });
+  test('when distance is not evenly divisible by #step, it does not move past the targetPosition (rounds the last step)', () => {
+    let d = new Drone().start();
+    d.move(101, 'S');
+    d.position = new Vector(0, 101 - (d.step.getLength() - 1));
+    d.updatePosition();
+    expect(d.position).toEqual(new Vector(0, 101));
+  });
+});
