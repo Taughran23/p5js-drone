@@ -3,19 +3,18 @@ if (typeof require !== "undefined") {
 }
 
 class Boundary {
-  constructor (w=width, h=height) {
-    w = w > width ? width : w;
-    h = h > height ? height : h;
-    this.w = w;
-    this.h = h;
-    this.offset = new Vector(
-      (width - w) / 2,
-      (height - h) / 2
-    )
+  constructor (boundaryWidth=width, boundaryHeight=height) {
+    boundaryWidth = boundaryWidth > width ? width : boundaryWidth;
+    boundaryHeight = boundaryHeight > height ? height : boundaryHeight;
+    this.top = (height - boundaryHeight) / 2;
+    this.left = (width - boundaryWidth) / 2;
+    this.right = boundaryWidth + this.left;
+    this.bottom = boundaryHeight + this.top;
   }
   draw () {
     noFill();
-    rect(this.offset.x, this.offset.y, this.w, this.h);
+    rect(this.left, this.top, this.right - this.left, this.bottom - this.top);
+  }
   }
 }
 

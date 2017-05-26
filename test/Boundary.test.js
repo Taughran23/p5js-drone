@@ -6,24 +6,24 @@ global.width = 800;
 global.height = 600;
 
 describe('#constructor', () => {
-  test('creates an instance of Boundary with the specivied (w, h)', () => {
-    let b = new Boundary(360, 240);
+  test('creates an instance of Boundary', () => {
+    let b = new Boundary();
     expect(b instanceof Boundary).toBe(true);
-    expect(b.w).toBe(360);
-    expect(b.h).toBe(240);
   });
 
-  test('#offset is automatically set to center the boundary on the canvas', () => {
+  test('sets #top #bottom #right and #left so that the boundary is centered on the screen', () => {
     let b = new Boundary(400, 400);
-    expect(b.offset).toEqual(new Vector(200, 100));
+    expect(b.left).toBe(200);
+    expect(b.top).toBe(100);
+    expect(b.right).toBe(600);
+    expect(b.bottom).toBe(500);
   });
 
   test('does not allow the dimensions of the boundary to be larger than the canvas', () => {
-    global.width = 800;
-    global.height = 600;
     let b = new Boundary(900, 700);
-    expect(b.w).toBe(800);
-    expect(b.h).toBe(600);
-    expect(b.offset).toEqual(new Vector(0, 0));
+    expect(b.left).toBe(0);
+    expect(b.top).toBe(0);
+    expect(b.right).toBe(800);
+    expect(b.bottom).toBe(600);
   });
 });
