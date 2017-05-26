@@ -1,6 +1,11 @@
+if (typeof require !== "undefined") {
+  var Vector = require('./Vector');
+}
+
 class Drone {
   constructor () {
     this.power = false;
+    this.position = new Vector(0, 0);
   }
 }
 
