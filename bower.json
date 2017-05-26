@@ -1,0 +1,19 @@
+{
+  "name": "p5-drone",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "maurogestoso <maurogestoso@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "p5.js": "p5js#^0.5.10"
+  }
+}
