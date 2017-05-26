@@ -18,6 +18,12 @@ class Vector {
       this.y + v.y
     );
   }
+  sub (v) {
+    return new Vector(
+      this.x - v.x,
+      this.y - v.y
+    );
+  }
 }
 
 if (typeof module !== "undefined") {
