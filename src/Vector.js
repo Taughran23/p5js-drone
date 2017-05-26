@@ -27,6 +27,12 @@ class Vector {
   isEqualTo (v) {
     return this.x === v.x && this.y === v.y;
   }
+  getDistance (v) {
+    return v.sub(this).getLength();
+  }
+  isWithinReach (v, dist) {
+    return this.getDistance(v) < dist;
+  }
 }
 
 if (typeof module !== "undefined") {
