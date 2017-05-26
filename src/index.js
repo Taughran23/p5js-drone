@@ -7,5 +7,6 @@ function setup () {
 }
 
 function draw () {
+  d.updatePosition();
   d.draw();
 }

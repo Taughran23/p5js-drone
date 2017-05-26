@@ -6,6 +6,7 @@ class Drone {
   constructor () {
     this.power = false;
     this.position = new Vector(0, 0);
+    this.targetPosition = new Vector(0, 0);
     this.size = 16;
     this.speed = 2;
   }
