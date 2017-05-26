@@ -22,6 +22,14 @@ class Boundary {
     if (pos.y < this.top) return new Vector(pos.x, this.top);
     return pos;
   }
+  set (boundaryWidth, boundaryHeight) {
+    boundaryWidth = boundaryWidth > width ? width : boundaryWidth;
+    boundaryHeight = boundaryHeight > height ? height : boundaryHeight;
+    this.top = (height - boundaryHeight) / 2;
+    this.left = (width - boundaryWidth) / 2;
+    this.right = boundaryWidth + this.left;
+    this.bottom = boundaryHeight + this.top;
+  }
 }
 
 if (typeof module !== "undefined") {

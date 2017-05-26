@@ -38,7 +38,7 @@ class Drone {
       'W': new Vector(-1, 0)
     };
     this.step = movement[dir].resize(this.speed);
-    this.targetPosition = this.position.add(movement[dir].resize(dist));
+    this.targetPosition = this.boundary.check(this.position.add(movement[dir].resize(dist)));
     return this;
   }
   updatePosition () {

@@ -41,13 +41,27 @@ describe('#move', () => {
     expect(d.move(100, 'N').position).toEqual(new Vector(0, 0));
   });
   test('sets target to the correct vector accoriding to the provided distance and direction', () => {
+    global.width = 100;
+    global.height = 100;
     let d = new Drone().start();
+    d.boundary.set(100, 100);
     expect(d.move(100, 'S').targetPosition).toEqual(new Vector(0, 100));
   });
   test('sets the step vector to the correct direction and a length of #speed', () => {
+    global.width = 100;
+    global.height = 100;
     let d = new Drone().start();
+    d.boundary.set(100, 100);
     expect(d.move(100, 'E').step).toEqual(new Vector(d.speed, 0));
     expect(d.step.getLength()).toBe(d.speed);
+  });
+  test('does not set #targetPosition outside the boundary', () => {
+    global.width = 100;
+    global.height = 100;
+    let d = new Drone(50, 50).start();
+    d.boundary.set(100, 100);
+    d.move(100, 'E');
+    expect(d.targetPosition).toEqual(new Vector(100, 50));
   });
 });
 
@@ -68,10 +82,14 @@ describe('#updatePosition', () => {
     expect(d.position).toEqual(new Vector(0, expectedPositionY));
   });
   test('when distance is not evenly divisible by #step, it does not move past the targetPosition (rounds the last step)', () => {
+    global.width = 100;
+    global.height = 100;
     let d = new Drone().start();
-    d.move(101, 'S');
-    d.position = new Vector(0, 101 - (d.step.getLength() - 1));
+    d.boundary.set(100, 100);
+    let dist = 53;
+    d.move(dist, 'S');
+    d.position = new Vector(0, dist - (d.step.getLength() - 1));
     d.updatePosition();
-    expect(d.position).toEqual(new Vector(0, 101));
+    expect(d.position).toEqual(new Vector(0, dist));
   });
 });
